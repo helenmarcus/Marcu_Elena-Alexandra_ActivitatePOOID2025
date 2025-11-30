@@ -51,3 +51,16 @@ public:
 	}
 };
 int Eveniment::nrEvenimente = 0; //initializare atribut static
+
+int main() {
+	Eveniment e1;
+	e1.afiseaza();
+
+	Eveniment e2("Concert rock", "Bucuresti");
+	e2.afiseaza();
+
+	Eveniment e3("Expozitie pictura", "Cluj", 120, 200);
+	e3.afiseaza();
+
+	return 0;
+}
