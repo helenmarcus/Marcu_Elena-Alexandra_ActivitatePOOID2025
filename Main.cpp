@@ -52,6 +52,64 @@ public:
 };
 int Eveniment::nrEvenimente = 0; //initializare atribut static
 
+// -----Clasa 2: Artist-----
+class Artist {
+public:
+	// atribute normale
+	string nume;
+	string genArtistic;
+	int varsta;
+
+	const int idArtist;       // atribut constant
+	static int nrArtisti;     // atribut static
+
+	float* tarif;             // pointer (HEAP) - tarif pe eveniment in EUR
+
+	// constructor fara parametri
+	Artist() : idArtist(++nrArtisti) {
+		nume = "TBD";
+		genArtistic = "TBD";
+		varsta = 0;
+		tarif = new float(0.0f);   // alocare dinamica
+	}
+
+	// constructor cu 2 parametri
+	Artist(string nume, string genArtistic) : idArtist(++nrArtisti) {
+		this->nume = nume;
+		this->genArtistic = genArtistic;
+		varsta = 0;
+		tarif = new float(0.0f);   // alocare dinamica
+	}
+
+	// constructor cu 4 parametri
+	Artist(string nume, string genArtistic, int varsta, float tarifEuro)
+		: idArtist(++nrArtisti) {
+		this->nume = nume;
+		this->genArtistic = genArtistic;
+		this->varsta = varsta;
+		tarif = new float(tarifEuro); // alocare dinamica
+	}
+
+	// functie statica - calculeaza tariful mediu
+	static float tarifMediu(float total, int nrA) {
+		if (nrA == 0) return 0;
+		return total / nrA;
+	}
+
+	void afiseaza() {
+		cout << "Artist ID:" << idArtist
+			<< ", nume:" << nume
+			<< ", gen artistic:" << genArtistic
+			<< ", varsta:" << varsta
+			<< ", tarif:" << *tarif << " EUR"
+			<< endl;
+	}
+};
+
+// initializare atribut static pentru Artist
+int Artist::nrArtisti = 0;
+
+
 int main() {
 	Eveniment e1;
 	e1.afiseaza();
