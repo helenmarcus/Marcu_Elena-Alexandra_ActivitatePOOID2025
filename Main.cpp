@@ -109,6 +109,58 @@ public:
 // initializare atribut static pentru Artist
 int Artist::nrArtisti = 0;
 
+// -----Clasa 3: Manager-----
+class Manager {
+public:
+	// atribute normale
+	string nume;
+	string telefon;
+
+	const int idManager;      // atribut constant
+	static int nrManageri;    // atribut static
+
+	int* aniExperienta;       // pointer (HEAP) - ani de experienta
+
+	// constructor fara parametri
+	Manager() : idManager(++nrManageri) {
+		nume = "TBD";
+		telefon = "TBD";
+		aniExperienta = new int(0);   // alocare dinamica
+	}
+
+	// constructor cu 2 parametri
+	Manager(string nume, string telefon) : idManager(++nrManageri) {
+		this->nume = nume;
+		this->telefon = telefon;
+		aniExperienta = new int(0);   // alocare dinamica
+	}
+
+	// constructor cu 3 parametri
+	Manager(string nume, string telefon, int aniExp)
+		: idManager(++nrManageri) {
+		this->nume = nume;
+		this->telefon = telefon;
+		aniExperienta = new int(aniExp); // alocare dinamica
+	}
+
+	// functie statica - experienta medie
+	static float experientaMedie(int totalAni, int nrM) {
+		if (nrM == 0) return 0;
+		return (float)totalAni / nrM;
+	}
+
+	void afiseaza() {
+		cout << "Manager ID:" << idManager
+			<< ", nume:" << nume
+			<< ", telefon:" << telefon
+			<< ", ani experienta:" << *aniExperienta
+			<< endl;
+	}
+};
+
+// initializare atribut static pentru Manager
+int Manager::nrManageri = 0;
+
 
 int main() {
 	Eveniment e1;
